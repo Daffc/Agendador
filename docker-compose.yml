@@ -38,7 +38,7 @@ services:
       /bin/sh -c "
       dotnet tool restore &&
       dotnet restore &&
-      dotnet watch run --urls=http://+:5000
+      dotnet run --project src/Api/Api.csproj --urls=http://+:5000
       "
 
   frontend-auto:
