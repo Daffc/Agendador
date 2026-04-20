@@ -26,4 +26,31 @@ public class TelefoneTests
 
         act.Should().Throw<RegraNegocioException>();
     }
+
+    [Fact]
+    public void Deve_ser_igual_quando_valores_sao_iguais()
+    {
+        Telefone tel1 = new Telefone("(41) 99999-9999");
+        Telefone tel2 = new Telefone("41999999999");
+
+        tel1.Should().Be(tel2);
+    }
+
+    [Fact]
+    public void Deve_ser_diferente_quando_valores_sao_diferentes()
+    {
+        Telefone tel1 = new Telefone("41999999999");
+        Telefone tel2 = new Telefone("11912345678");
+
+        tel1.Should().NotBe(tel2);
+    }
+
+    [Fact]
+    public void HashCode_deve_ser_igual_para_telefones_iguais()
+    {
+        Telefone tel1 = new Telefone("(41) 99999-9999");
+        Telefone tel2 = new Telefone("41999999999");
+
+        tel1.GetHashCode().Should().Be(tel2.GetHashCode());
+    }
 }

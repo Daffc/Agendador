@@ -15,7 +15,7 @@ public sealed class DataHoraAgendamento : ValueObject
         Valor = valor;
     }
 
-    protected override IEnumerable<object?> GetEqualityComponents()
+    public override IEnumerable<object> GetAtomicValues()
     {
         yield return Valor;
     }

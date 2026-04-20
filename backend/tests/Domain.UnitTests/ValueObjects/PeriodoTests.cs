@@ -41,4 +41,31 @@ public class PeriodoTests
             p1.ConflitaCom(p2).Should().BeFalse();
         }
     }
+
+    [Fact]
+    public void Deve_ser_igual_quando_valores_sao_iguais()
+    {
+        var p1 = new Periodo(DateTime.Parse("2024-01-01 10:00"), DateTime.Parse("2024-01-01 12:00"));
+        var p2 = new Periodo(DateTime.Parse("2024-01-01 10:00"), DateTime.Parse("2024-01-01 12:00"));
+
+        p1.Should().Be(p2);
+    }
+
+    [Fact]
+    public void Deve_ser_diferente_quando_valores_sao_diferentes()
+    {
+        var p1 = new Periodo(DateTime.Parse("2024-01-01 10:00"), DateTime.Parse("2024-01-01 12:00"));
+        var p2 = new Periodo(DateTime.Parse("2024-01-01 12:00"), DateTime.Parse("2024-01-01 15:00"));
+
+        p1.Should().NotBe(p2);
+    }
+
+    [Fact]
+    public void HashCode_deve_ser_igual_para_periodos_iguais()
+    {
+        var p1 = new Periodo(DateTime.Parse("2024-01-01 10:00"), DateTime.Parse("2024-01-01 12:00"));
+        var p2 = new Periodo(DateTime.Parse("2024-01-01 10:00"), DateTime.Parse("2024-01-01 12:00"));
+
+        p1.GetHashCode().Should().Be(p2.GetHashCode());
+    }
 }

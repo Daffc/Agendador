@@ -21,7 +21,7 @@ public sealed class Telefone : ValueObject
         Valor = apenasNumeros;
     }
 
-    protected override IEnumerable<object?> GetEqualityComponents()
+    public override IEnumerable<object> GetAtomicValues()
     {
         yield return Valor;
     }

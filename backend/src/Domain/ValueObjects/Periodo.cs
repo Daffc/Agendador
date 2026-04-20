@@ -22,7 +22,7 @@ public sealed class Periodo : ValueObject
         return Inicio < outro.Fim && Fim > outro.Inicio;
     }
 
-    protected override IEnumerable<object?> GetEqualityComponents()
+    public override IEnumerable<object> GetAtomicValues()
     {
         yield return Inicio;
         yield return Fim;

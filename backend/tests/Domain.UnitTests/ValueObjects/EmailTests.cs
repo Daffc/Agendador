@@ -29,4 +29,31 @@ public class EmailTests
 
         act.Should().Throw<RegraNegocioException>();
     }
+
+    [Fact]
+    public void Deve_ser_igual_quando_valores_sao_iguais()
+    {
+        var email1 = new Email("teste@email.com");
+        var email2 = new Email(" TESTE@EMAIL.COM ");
+
+        email1.Should().Be(email2);
+    }
+
+    [Fact]
+    public void Deve_ser_diferente_quando_valores_sao_diferentes()
+    {
+        var email1 = new Email("teste@email.com");
+        var email2 = new Email("USER@DOMAIN.COM");
+
+        email1.Should().NotBe(email2);
+    }
+
+    [Fact]
+    public void HashCode_deve_ser_igual_para_emails_iguais()
+    {
+        var email1 = new Email("teste@email.com");
+        var email2 = new Email("teste@email.com");
+
+        email1.GetHashCode().Should().Be(email2.GetHashCode());
+    }
 }
